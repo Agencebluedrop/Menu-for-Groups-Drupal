@@ -1,0 +1,7 @@
+entity.group.groupmenu:
+  path: '/group/{group}/menu'
+  defaults:
+    _controller: '\Drupal\menugroup\Controller\MenugroupController::addmenu'
+    _title: 'Add Menu'
+  requirements:
+    _permission: 'access menugroup information'

@@ -1,0 +1,4 @@
+access menugroup information:
+  description: 'Access Menu information'
+  title: 'Access Menu information'
+  restrict access: TRUE

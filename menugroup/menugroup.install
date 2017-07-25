@@ -1,0 +1,61 @@
+<?php
+
+/**
+ * @file
+ * Create/Drop table in DB.
+ */
+
+/**
+ * Implements hook_schema().
+ *
+ * @ingroup tablesort_example
+ */
+function menugroup_schema() {
+  $schema['group_group_menu_menugroup'] = [
+    'description' => 'Links a menu to a specific group.',
+    'fields' => [
+      'gmid' => [
+        'type' => 'serial',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'description' => 'Primary Key: Unique group_menu ID',
+      ],
+      'group_id' => [
+        'type' => 'int',
+        'not null' => TRUE,
+        'unsigned' => TRUE,
+        'default' => 0,
+        'description' => "Group gid.",
+      ],
+      'menu_id' => [
+        'type' => 'varchar',
+        'length' => 50,
+        'not null' => TRUE,
+        'default' => '',
+        'description' => 'ID of the menu.',
+      ],
+    ],
+    'primary key' => ['gmid'],
+    'indexes' => [
+      'group_id' => ['group_id'],
+      'manu_id' => ['menu_id'],
+    ],
+  ];
+
+  return $schema;
+}
+
+/**
+ * Implements hook_uninstall().
+ *
+ * It's good to clean up after ourselves.
+ *
+ * @ingroup tablesort_example
+ */
+function menugroup_uninstall() {
+
+  $db_connection = \Drupal::database();
+  if ($db_connection->schema()->tableExists('group_group_menu_menugroup')) {
+    $db_connection->schema()->dropTable('group_group_menu_menugroup');
+  }
+}

@@ -1,0 +1,4 @@
+menugroup.content:
+  title: 'Menu'
+  base_route: 'entity.group.canonical'
+  route_name: 'entity.group.groupmenu'
